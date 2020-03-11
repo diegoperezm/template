@@ -1,0 +1,77 @@
+* Content section
+
+#+NAME: setup-emmet
+#+BEGIN_SRC js
+const expand  = require('/home/erretres/Desktop/projects/calculator/node_modules/emmet/').default;
+#+END_SRC  
+
+
+#+NAME: emmet-content 
+#+BEGIN_SRC js :noweb yes :results  output org   
+<<setup-emmet>>
+
+let content = 
+ 'h1.title{title}'                  +
+ '+.container'                      ;      
+console.log(expand(content));
+
+#+END_SRC
+
+
+#+NAME: content 
+#+RESULTS: emmet-content
+#+BEGIN_SRC org
+<h1 class="title">title</h1>
+<div class="container"></div>
+#+END_SRC
+
+
+
+* HTML setup
+  
+** doctype, lang and head section 
+
+#+NAME: doctypeHtmlLangHead
+#+BEGIN_SRC html :noweb yes
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <!-- prevent favicon request -->
+    <link href="data:;base64,iVBORw0KGgo=" rel="icon" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css" />
+</head>
+#+END_SRC
+
+
+** scripts section 
+#+NAME: scripts
+#+BEGIN_SRC js html :noweb yes
+    <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
+    <script src="js/script.js"></script>
+#+END_SRC
+
+
+
+* Main index.html
+#+BEGIN_SRC html :noweb yes :mkdirp yes :tangle ../src/index.html  
+<<doctypeHtmlLangHead>>
+<body>
+ <<content>>
+ <<scripts>>
+</body>
+</html>
+#+END_SRC
+
+
+* Check
+
+#+BEGIN_SRC sh :results  verbatim :dir ../src/ 
+curl -H "Content-Type: text/html; charset=utf-8" --data-binary @index.html  https://validator.w3.org/nu/?out=gnu  
+#+END_SRC
+
+
+

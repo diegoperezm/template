@@ -1,0 +1,82 @@
+#+PROPERTY: header-args :results verbatim
+
+* JS 
+
+** User Story
+  
+#+BEGIN_QUOTE
+
+#+END_QUOTE
+
+** Setup
+
+#+NAME: setup
+#+BEGIN_SRC js
+const { Machine, actions, interpret } = XState; // global variable: window.XState
+#+END_SRC
+
+** Input handler
+
+#+NAME: inputhandler
+#+BEGIN_SRC js :noweb yes
+
+#+END_SRC
+
+
+** Functions
+
+#+NAME: functions
+#+BEGIN_SRC js :noweb yes
+
+#+END_SRC
+
+
+** Statechart
+
+*** States
+
+#+NAME: statename
+#+BEGIN_SRC js :noweb yes
+
+#+END_SRC
+
+*** Main statechart
+
+#+NAME: statechart
+#+BEGIN_SRC js :noweb 
+const lightMachine = Machine({
+  // ...
+});
+
+
+const lightService = interpret(lightMachine);
+
+
+#+END_SRC
+
+
+
+* Main function
+
+#+NAME: main
+#+BEGIN_SRC js :noweb yes :tangle ../src/js/script.js
+<<setup>>
+<<functions>>
+<<statechart>>
+#+END_SRC
+
+* Tests 
+
+#+NAME: tests
+#+BEGIN_SRC js
+
+#+END_SRC
+
+* prettier
+
+#+NAME: prettier
+#+BEGIN_SRC  sh :exports none   :dir ../src/
+npm run prettier;
+#+END_SRC
+
+
